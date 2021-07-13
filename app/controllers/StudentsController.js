@@ -26,6 +26,7 @@ class StudentsController{
     }
     //GET /students/
     index(req,res){
+       
         let perPage=10, Page;
         if (req.query.page) Page=Number(req.query.page); else Page=1;
         Student.find({})
