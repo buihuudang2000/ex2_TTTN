@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 
 class ParentsController{
 
-    //GET /Class/
+    //GET /parents/
     index(req,res){
         let perPage=10, Page;
         if (req.query.page) Page=Number(req.query.page); else Page=1;
@@ -24,7 +24,7 @@ class ParentsController{
         
     }
 
-    //Get /showparent/:id
+    //Get /parents/:id
     showparent(req,res){
         // Parent.aggregate([{$group : {_id : '$name'}}])
         // Parent.aggregate([{$group : {_id : '$name'}}])
@@ -47,7 +47,7 @@ class ParentsController{
 
     }
 
-    // POST /insertparent
+    // POST /parents
     insertparent(req, res){
 
         if (!(req.body.id && req.body.name && req.body.children)) {

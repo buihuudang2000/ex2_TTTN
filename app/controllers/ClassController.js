@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 
 class ClassController{
 
-    //GET /Class/
+    //GET /class/
     index(req,res){
         let perPage=10, Page;
         if (req.query.page) Page=Number(req.query.page); else Page=1;
@@ -36,7 +36,7 @@ class ClassController{
         
     }
 
-    // POST /insertclass
+    // POST /class
     insertclass(req,res){
         
         if (!(req.body.id && req.body.name  )) {

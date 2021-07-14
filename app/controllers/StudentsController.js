@@ -7,9 +7,10 @@ const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
 
 class StudentsController{
-    //GET /students/getuser?id&creat_at&update_at&abd&sort&typesort=asc||desc
+    //GET /students/getuser?name&creat_at&update_at&class&sort&typesort=asc||desc
     getuser( req, res){
         const filter_value= {$or: [
+            {name: req.query.name},
             {createdAt: (req.query.create)? new Date(req.query.create): undefined},
             {class_id: (req.query.class)? mongoose.Types.ObjectId(req.query.class): undefined},
             {updatedAt: (req.query.update)? new Date(req.query.update): undefined}]
@@ -42,7 +43,7 @@ class StudentsController{
         
     }
 
-    //Get /showstudent/:id
+    //Get /student/:id
     showstudent(req,res){
         Student.find({ID: req.params.id})
         .populate('class_id')
@@ -55,7 +56,7 @@ class StudentsController{
         
     }
 
-    // POST /insertstudent
+    // POST /student
     insertstudent(req,res){
         console.log(req.body);
         if (!(req.body.id && req.body.name && req.body.date && req.body.gender )) {
